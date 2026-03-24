@@ -26,7 +26,7 @@ export default function CodeBlock() {
       </div>
 
       {/* Code Content */}
-      <div className="p-6 text-sm sm:text-base leading-relaxed text-left">
+      <div className="p-4 sm:p-6 text-[10px] xs:text-xs sm:text-sm md:text-base leading-relaxed text-left">
         <div className="mb-2">
           <span className="text-gray-500 italic">// Building useful products</span>
         </div>

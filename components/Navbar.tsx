@@ -152,7 +152,7 @@ export default function Navbar({ isDark, toggleTheme }: NavbarProps) {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.2 }}
-            className="fixed top-24 left-4 right-4 z-40 rounded-2xl p-4 glass-strong"
+            className="fixed top-24 left-4 right-4 z-40 rounded-2xl p-4 glass-strong flex flex-col gap-2"
           >
             {navLinks.map((link, i) => (
               <motion.button
