@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
 import { FiGithub, FiLinkedin, FiMail, FiDownload, FiArrowDown } from 'react-icons/fi';
 import { personalInfo } from '@/lib/data';
-import CodeBlock from './CodeBlock';
 
 export default function Hero() {
   const scrollToAbout = () => {
@@ -132,10 +131,45 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        {/* Code Block Right Side */}
-        <div className="flex-1 w-full max-w-xl">
-          <CodeBlock />
-        </div>
+        {/* Profile Photo Right Side */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.85 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="flex-1 flex items-center justify-center"
+        >
+          <div className="relative">
+            {/* Outer glow ring */}
+            <div
+              className="absolute inset-0 rounded-full blur-2xl opacity-60"
+              style={{ background: 'linear-gradient(135deg, rgba(108,99,255,0.6), rgba(34,211,238,0.5))', transform: 'scale(1.1)' }}
+            />
+            {/* Gradient border ring */}
+            <div
+              className="relative rounded-full p-[4px]"
+              style={{ background: 'linear-gradient(135deg, #6c63ff, #22d3ee)' }}
+            >
+              {/* Inner dark ring */}
+              <div className="rounded-full p-[3px] bg-[#0d0e1a]">
+                {/* Photo */}
+                <img
+                  src="/myprofile.png"
+                  alt="Malloju Vishwam"
+                  className="rounded-full object-cover w-72 h-72 sm:w-80 sm:h-80 lg:w-96 lg:h-96"
+                  style={{ objectPosition: 'center top' }}
+                />
+              </div>
+            </div>
+
+            {/* Floating dot bottom-left */}
+            <motion.div
+              animate={{ scale: [1, 1.3, 1] }}
+              transition={{ duration: 2, repeat: Infinity }}
+              className="absolute bottom-6 -left-4 w-5 h-5 rounded-full border-2"
+              style={{ borderColor: '#6c63ff', background: 'transparent' }}
+            />
+          </div>
+        </motion.div>
       </div>
 
       {/* Scroll indicator */}
