@@ -10,24 +10,29 @@ export default function Projects() {
   const [hovered, setHovered] = useState<number | null>(null);
 
   return (
-    <section id="projects" className="py-24 relative">
-      <div className="orb w-80 h-80 top-0 right-0" style={{ background: 'rgba(244,114,182,0.1)' }} />
+    <section id="projects" className="py-24 relative overflow-hidden">
+      {/* Background Glows */}
+      <div className="absolute top-0 right-1/4 w-[500px] h-[500px] rounded-full blur-[120px] opacity-20 pointer-events-none" style={{ background: 'radial-gradient(circle, #6c63ff, transparent)' }} />
+      <div className="absolute bottom-0 left-1/4 w-[600px] h-[600px] rounded-full blur-[150px] opacity-10 pointer-events-none" style={{ background: 'radial-gradient(circle, #22d3ee, transparent)' }} />
 
-      <div ref={ref} className="max-w-6xl mx-auto px-6 md:px-12 lg:px-24 relative left-[2cm]">
+      <div ref={ref} className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-16 flex flex-col items-center"
         >
-          <p className="section-subheading mb-3">What I&apos;ve built</p>
-          <h2 className="section-heading">Featured <span className="gradient-text">Projects</span></h2>
+          <p className="text-xs font-mono tracking-[0.2em] uppercase text-gray-400 mb-3">
+            What I&apos;ve built
+          </p>
+          <h2 className="text-4xl sm:text-5xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-purple-500 via-blue-500 to-cyan-400 pb-2" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+            Featured Projects
+          </h2>
         </motion.div>
 
         {/* Project cards */}
-        {/* Project cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[3cm] w-full pl-[2cm]">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10 items-stretch w-full">
           {projects.map((project, i) => (
             <motion.div
               key={project.id}
@@ -36,23 +41,27 @@ export default function Projects() {
               transition={{ duration: 0.6, delay: i * 0.15 }}
               onMouseEnter={() => setHovered(project.id)}
               onMouseLeave={() => setHovered(null)}
-              className="animated-border relative overflow-hidden group flex flex-col"
+              className="relative overflow-hidden group flex flex-col h-full rounded-3xl"
               style={{
-                background: 'var(--bg-card)',
-                border: '1px solid var(--border-color)',
-                borderRadius: '20px',
+                backgroundColor: 'rgba(255, 255, 255, 0.03)',
+                backdropFilter: 'blur(16px)',
+                WebkitBackdropFilter: 'blur(16px)',
+                border: '1px solid rgba(255, 255, 255, 0.08)',
                 transition: 'all 0.4s cubic-bezier(0.4,0,0.2,1)',
-                transform: hovered === project.id ? 'translateY(-8px)' : 'translateY(0)',
-                boxShadow: hovered === project.id ? `0 20px 60px ${project.color}25` : 'none',
+                transform: hovered === project.id ? 'translateY(-8px) scale(1.02)' : 'translateY(0) scale(1)',
+                boxShadow: hovered === project.id ? `0 20px 60px ${project.color}25` : '0 10px 30px -10px rgba(0,0,0,0.5)',
               }}
             >
               {/* Project Image */}
-              <div className="w-full h-[140px] relative overflow-hidden bg-gray-100/5 dark:bg-gray-800/30">
+              <div className="w-full h-48 relative overflow-hidden bg-[#11121a]">
                 <img
                   src={(project as any).image}
                   alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
+                {/* Image Overlay Texture */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0d0e1a] via-transparent to-transparent opacity-80" />
+                
                 {/* Top accent line */}
                 <div
                   className="absolute top-0 left-0 h-1 w-full z-10"
@@ -60,59 +69,65 @@ export default function Projects() {
                 />
               </div>
 
-              <div className="p-6 sm:p-8">
-                {/* Header */}
-                <div className="flex items-start justify-between mb-4">
+              {/* Card Body */}
+              <div className="p-6 sm:p-8 flex flex-col flex-grow">
+                {/* Meta Header */}
+                <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center gap-3">
                     <div
-                      className="w-11 h-11 rounded-2xl flex items-center justify-center text-xl"
-                      style={{ background: `${project.color}15`, border: `1px solid ${project.color}25` }}
+                      className="w-10 h-10 rounded-xl flex items-center justify-center text-lg shadow-lg"
+                      style={{ background: `${project.color}15`, border: `1px solid ${project.color}30` }}
                     >
                       {project.icon}
                     </div>
-                    <div>
-                      <span
-                        className="text-xs font-mono block"
-                        style={{ color: project.color, letterSpacing: '1px', textTransform: 'uppercase' }}
-                      >
-                        {project.category}
-                      </span>
-                    </div>
+                    <span
+                      className="text-[11px] font-mono font-semibold tracking-wider uppercase"
+                      style={{ color: project.color }}
+                    >
+                      {project.category}
+                    </span>
                   </div>
-                  <span
-                    className="text-xs"
-                    style={{ color: 'var(--text-muted)', fontFamily: "'JetBrains Mono', monospace" }}
-                  >
+                  <span className="text-[11px] font-mono text-gray-500">
                     {project.period}
                   </span>
                 </div>
 
+                {/* Title */}
                 <h3
-                  className="text-lg font-bold mb-3 group-hover:text-purple-400 transition-colors duration-300"
-                  style={{ fontFamily: "'Space Grotesk', sans-serif", color: 'var(--text-primary)' }}
+                  className="text-xl font-bold mb-3 text-white transition-colors duration-300 group-hover:text-transparent group-hover:bg-clip-text"
+                  style={{ 
+                    fontFamily: "'Space Grotesk', sans-serif",
+                    backgroundImage: hovered === project.id ? `linear-gradient(90deg, #fff, ${project.color})` : 'none',
+                  }}
                 >
                   {project.title}
                 </h3>
 
-                <p className="text-sm leading-relaxed mb-5" style={{ color: 'var(--text-secondary)' }}>
+                {/* Description with Line Clamp */}
+                <p className="text-sm text-gray-400 leading-relaxed mb-6 line-clamp-2">
                   {project.description}
                 </p>
 
-                {/* Tech stack */}
-                <div className="flex flex-wrap gap-2 mb-6">
+                {/* Tech Stack Pills */}
+                <div className="flex flex-wrap gap-2 mb-8">
                   {project.tech.map((t) => (
-                    <span key={t} className="tech-tag text-xs">{t}</span>
+                    <span 
+                      key={t} 
+                      className="px-3 py-1.5 rounded-lg text-[11px] font-mono font-medium"
+                      style={{ background: 'rgba(255,255,255,0.05)', color: '#d1d5db', border: '1px solid rgba(255,255,255,0.05)' }}
+                    >
+                      {t}
+                    </span>
                   ))}
                 </div>
 
-                {/* Links */}
-                <div className="flex items-center gap-3">
+                {/* Bottom Links Aligned */}
+                <div className="flex items-center justify-between mt-auto pt-4 border-t border-white/5">
                   <a
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-sm font-medium transition-all duration-200 hover:text-purple-400"
-                    style={{ color: 'var(--text-secondary)' }}
+                    className="flex items-center gap-2 text-xs sm:text-sm font-medium transition-all duration-200 text-gray-400 hover:text-white"
                   >
                     <FiGithub size={16} />
                     Code
@@ -122,7 +137,7 @@ export default function Projects() {
                       href={project.demo}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-sm font-medium transition-all duration-200"
+                      className="flex items-center gap-2 text-xs sm:text-sm font-semibold transition-all duration-200"
                       style={{ color: project.color }}
                     >
                       <FiExternalLink size={16} />
@@ -132,11 +147,11 @@ export default function Projects() {
                 </div>
               </div>
 
-              {/* Hover glow effect */}
+              {/* Hover Glow Ring inside card */}
               <div
-                className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity duration-500"
+                className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity duration-700"
                 style={{
-                  background: `radial-gradient(circle at 50% 0%, ${project.color}08, transparent 70%)`,
+                  boxShadow: `inset 0 0 0 1px ${project.color}50`,
                 }}
               />
             </motion.div>
@@ -148,15 +163,15 @@ export default function Projects() {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.6 }}
-          className="text-center mt-12"
+          className="text-center mt-16"
         >
           <a
             href="https://github.com/Malloju"
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-secondary inline-flex items-center gap-2"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-medium text-white transition-all bg-white/5 border border-white/10 hover:bg-white/10 hover:scale-105 hover:shadow-[0_0_20px_rgba(108,99,255,0.3)]"
           >
-            <FiGithub size={16} />
+            <FiGithub size={18} />
             View More on GitHub
           </a>
         </motion.div>
