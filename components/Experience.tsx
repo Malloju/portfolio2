@@ -206,13 +206,15 @@ export default function Experience() {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          className="relative left-8"
-          style={{ marginTop: '3cm' }}
+          className="mt-24 relative left-8"
         >
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-2 text-white">
               Coding Profiles & <span className="text-[#8b5cf6]">Consistency</span>
             </h2>
+            <p className="text-gray-400 text-sm">
+              I treat consistency like a skill. Daily reps, clean thinking, better outcomes.
+            </p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
