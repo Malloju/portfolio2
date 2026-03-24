@@ -119,7 +119,7 @@ export default function Experience() {
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-12 flex-wrap">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-12 items-stretch">
             {certifications.map((cert) => (
               <div key={cert.id} className="rounded-xl bg-[#1A1C29] overflow-hidden flex flex-col h-full border border-gray-800">
                 <div className="relative bg-white w-full h-[220px] p-2 flex items-center justify-center">
@@ -168,19 +168,37 @@ export default function Experience() {
                 </div>
               </div>
             ))}
-          </div>
 
-          {/* KPIT Sparkle Block */}
-          <div className="mt-8 rounded-2xl bg-[#151624] p-6 border border-gray-800 shadow-xl flex items-center gap-6 group hover:border-[#8b5cf6]/50 transition-colors">
-            <div className="w-16 h-16 rounded-full bg-[#1A1C30] flex items-center justify-center text-3xl shadow-lg border border-gray-700/50 flex-shrink-0 group-hover:scale-110 transition-transform">
-              ✨
+            {/* KPIT Sparkle Grid Card */}
+            <div className="rounded-xl bg-[#151624] overflow-hidden flex flex-col border border-gray-800 shadow-xl group hover:border-[#8b5cf6]/50 transition-all">
+              {/* Image area */}
+              <div className="w-full h-[220px] bg-white flex items-center justify-center relative overflow-hidden">
+                <img
+                  src="/certificates/kpit-sparkle.png"
+                  alt="KPIT Sparkle 2025"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="p-6 flex flex-col flex-grow">
+                <h4 className="text-[17px] font-bold text-white mb-4 leading-tight">
+                  Participated in KPIT Sparkle 2025
+                </h4>
+                <div className="flex flex-col gap-3 mb-6">
+                  <div className="flex items-center gap-3 text-sm text-gray-400">
+                    <FiBriefcase className="w-4 h-4" />
+                    KPIT Technologies
+                  </div>
+                  <div className="flex items-center gap-3 text-sm text-gray-400">
+                    <FiCalendar className="w-4 h-4" />
+                    2025
+                  </div>
+                </div>
+                <div className="mt-auto pt-4 border-t border-gray-800">
+                  <p className="text-sm text-gray-500 text-center">Innovation &amp; Mobility Contest</p>
+                </div>
+              </div>
             </div>
-            <div>
-              <h3 className="text-xl font-bold text-white mb-2 group-hover:text-[#8b5cf6] transition-colors">Participated in KPIT Sparkle 2025</h3>
-              <p className="text-gray-400 text-sm">
-                Actively participated in KPIT Sparkle, a prominent mobility and energy innovation contest.
-              </p>
-            </div>
+
           </div>
         </motion.div>
 
@@ -188,15 +206,13 @@ export default function Experience() {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          className="mt-24 relative left-8"
+          className="relative left-8"
+          style={{ marginTop: '3cm' }}
         >
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-2 text-white">
               Coding Profiles & <span className="text-[#8b5cf6]">Consistency</span>
             </h2>
-            <p className="text-gray-400 text-sm">
-              I treat consistency like a skill. Daily reps, clean thinking, better outcomes.
-            </p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
