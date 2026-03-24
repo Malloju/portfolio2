@@ -11,7 +11,7 @@ export const personalInfo = {
 };
 
 export const about = {
-  summary: "I'm a passionate Computer Science student specializing in AI & Machine Learning at Lovely Professional University. I love building intelligent systems, full-stack applications, and data-driven solutions. With hands-on experience in deep learning, MERN stack development, and data science, I strive to solve real-world problems through code. I hold multiple industry certifications from Oracle & Infosys.",
+  summary: "I'm a Computer Science student focused on building practical, high-impact solutions rather than just completing coursework. My work sits at the intersection of AI, machine learning, and full-stack development, where I turn ideas into functioning systems that solve real problems. I prioritize hands-on learning—shipping projects, debugging failures, and improving performance—over passive theory.\n\nI've worked with modern tools and frameworks across the MERN stack, along with core machine learning concepts such as model training, evaluation, and data preprocessing. I don't chase trends blindly; I focus on understanding fundamentals and applying them effectively. Whether it's developing intelligent applications or handling real-world datasets, I aim for clarity, efficiency, and measurable results.\n\nI value discipline, consistency, and accountability. I don't rely on motivation—I build habits that produce outcomes. I take feedback seriously, iterate quickly, and push my limits when something feels uncomfortable or complex.\n\nMy goal is simple: become a developer who can design, build, and scale systems that matter. Not just someone who knows concepts, but someone who delivers results.",
 };
 
 export const skills = {
