@@ -4,6 +4,7 @@ import Cursor from '@/components/Cursor';
 import Loader from '@/components/Loader';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
+import ScrollDots from '@/components/ScrollDots';
 import About from '@/components/About';
 import Skills from '@/components/Skills';
 import Projects from '@/components/Projects';
@@ -33,6 +34,7 @@ export default function Home() {
       <Loader />
       <Cursor />
       <Navbar isDark={isDark} toggleTheme={toggleTheme} />
+      <ScrollDots />
       <main>
         <Hero />
         <About />
