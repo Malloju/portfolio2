@@ -28,7 +28,7 @@ export default function ScrollDots() {
   }, []);
 
   return (
-    <div className="fixed left-6 top-1/2 -translate-y-1/2 z-50 flex-col gap-5 hidden lg:flex">
+    <div className="fixed right-6 top-1/2 -translate-y-1/2 z-50 flex-col gap-5 hidden lg:flex">
       {sections.map((section) => {
         const isActive = activeSection === section;
         return (

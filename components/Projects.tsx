@@ -32,7 +32,7 @@ export default function Projects() {
         </motion.div>
 
         {/* Project cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10 items-stretch w-full">
+        <div className="max-w-[1200px] mx-auto px-0 md:px-8 flex flex-wrap justify-center gap-6 sm:gap-8 lg:gap-10 items-stretch w-full">
           {projects.map((project, i) => (
             <motion.div
               key={project.id}
@@ -41,80 +41,65 @@ export default function Projects() {
               transition={{ duration: 0.6, delay: i * 0.15 }}
               onMouseEnter={() => setHovered(project.id)}
               onMouseLeave={() => setHovered(null)}
-              className="relative overflow-hidden group flex flex-col h-full rounded-3xl"
+              className="relative flex flex-col h-full rounded-2xl overflow-hidden transition-all duration-300 group w-full sm:w-[380px] lg:w-[340px]"
               style={{
-                backgroundColor: 'rgba(255, 255, 255, 0.03)',
-                backdropFilter: 'blur(16px)',
-                WebkitBackdropFilter: 'blur(16px)',
-                border: '1px solid rgba(255, 255, 255, 0.08)',
-                transition: 'all 0.4s cubic-bezier(0.4,0,0.2,1)',
-                transform: hovered === project.id ? 'translateY(-8px) scale(1.02)' : 'translateY(0) scale(1)',
-                boxShadow: hovered === project.id ? `0 20px 60px ${project.color}25` : '0 10px 30px -10px rgba(0,0,0,0.5)',
+                backgroundColor: '#16142c', // Solid dark background from reference
+                transform: hovered === project.id ? 'translateY(-6px)' : 'translateY(0)',
+                boxShadow: hovered === project.id ? `0 20px 40px ${project.color}15` : '0 10px 30px -15px rgba(0,0,0,0.5)',
               }}
             >
               {/* Project Image */}
-              <div className="w-full h-48 relative overflow-hidden bg-[#11121a]">
+              <div className="w-full h-[220px] sm:h-[240px] relative overflow-hidden bg-[#0a0914]">
                 <img
                   src={(project as any).image}
                   alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-                {/* Image Overlay Texture */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0d0e1a] via-transparent to-transparent opacity-80" />
-                
-                {/* Top accent line */}
-                <div
-                  className="absolute top-0 left-0 h-1 w-full z-10"
-                  style={{ background: `linear-gradient(90deg, ${project.color}, ${project.color}80)` }}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
               </div>
 
               {/* Card Body */}
-              <div className="p-6 sm:p-8 flex flex-col flex-grow">
-                {/* Meta Header */}
-                <div className="flex items-center justify-between mb-4">
-                  <div className="flex items-center gap-3">
-                    <div
-                      className="w-10 h-10 rounded-xl flex items-center justify-center text-lg shadow-lg"
-                      style={{ background: `${project.color}15`, border: `1px solid ${project.color}30` }}
-                    >
-                      {project.icon}
-                    </div>
-                    <span
-                      className="text-[11px] font-mono font-semibold tracking-wider uppercase"
-                      style={{ color: project.color }}
-                    >
-                      {project.category}
-                    </span>
-                  </div>
-                  <span className="text-[11px] font-mono text-gray-500">
-                    {project.period}
+              <div className="p-6 sm:p-7 flex flex-col flex-grow">
+                {/* Category Pill */}
+                <div className="mb-4">
+                  <span
+                    className="inline-block px-4 py-1.5 rounded-full text-xs font-semibold tracking-wide"
+                    style={{ 
+                      backgroundColor: 'rgba(255, 255, 255, 0.05)', 
+                      color: '#a5b4fc'
+                    }}
+                  >
+                    {project.category}
                   </span>
                 </div>
 
                 {/* Title */}
                 <h3
-                  className="text-xl font-bold mb-3 text-white transition-colors duration-300 group-hover:text-transparent group-hover:bg-clip-text"
-                  style={{ 
-                    fontFamily: "'Space Grotesk', sans-serif",
-                    backgroundImage: hovered === project.id ? `linear-gradient(90deg, #fff, ${project.color})` : 'none',
-                  }}
+                  className="text-xl sm:text-[22px] font-bold mb-5 text-white flex items-center gap-2.5 leading-tight group-hover:text-indigo-200 transition-colors duration-300"
+                  style={{ fontFamily: "'Space Grotesk', sans-serif" }}
                 >
+                  <span className="text-[22px] drop-shadow-md">{project.icon}</span>
                   {project.title}
                 </h3>
 
-                {/* Description with Line Clamp */}
-                <p className="text-sm text-gray-400 leading-relaxed mb-6 line-clamp-2">
-                  {project.description}
-                </p>
+                {/* Description Bullets */}
+                <div className="space-y-3.5 mb-8 flex-grow">
+                  {project.description.split('. ').map((sentence, idx) => {
+                    if (!sentence.trim()) return null;
+                    return (
+                      <div key={idx} className="flex items-start text-[14px] leading-[1.6] text-gray-300">
+                        <span className="text-cyan-400 text-[18px] mr-3 font-bold mt-[1px] leading-none">▸</span>
+                        <span className="opacity-90">{sentence.trim()}{sentence.endsWith('.') ? '' : '.'}</span>
+                      </div>
+                    );
+                  })}
+                </div>
 
-                {/* Tech Stack Pills */}
-                <div className="flex flex-wrap gap-2 mb-8">
+                {/* Tech Stack Pills (Subtle, preserved from original) */}
+                <div className="flex flex-wrap gap-2 mb-6">
                   {project.tech.map((t) => (
                     <span 
                       key={t} 
-                      className="px-3 py-1.5 rounded-lg text-[11px] font-mono font-medium"
-                      style={{ background: 'rgba(255,255,255,0.05)', color: '#d1d5db', border: '1px solid rgba(255,255,255,0.05)' }}
+                      className="px-2.5 py-1 rounded-md text-[11px] font-mono font-medium bg-white/5 text-gray-400"
                     >
                       {t}
                     </span>
@@ -122,12 +107,12 @@ export default function Projects() {
                 </div>
 
                 {/* Bottom Links Aligned */}
-                <div className="flex items-center justify-between mt-auto pt-4 border-t border-white/5">
+                <div className="flex items-center justify-between mt-auto pt-5 border-t border-white/5">
                   <a
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-xs sm:text-sm font-medium transition-all duration-200 text-gray-400 hover:text-white"
+                    className="flex items-center gap-2 text-sm font-medium transition-all duration-200 text-gray-400 hover:text-white"
                   >
                     <FiGithub size={16} />
                     Code
@@ -137,7 +122,7 @@ export default function Projects() {
                       href={project.demo}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-xs sm:text-sm font-semibold transition-all duration-200"
+                      className="flex items-center gap-2 text-sm font-semibold transition-all duration-200"
                       style={{ color: project.color }}
                     >
                       <FiExternalLink size={16} />
@@ -146,14 +131,6 @@ export default function Projects() {
                   )}
                 </div>
               </div>
-
-              {/* Hover Glow Ring inside card */}
-              <div
-                className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity duration-700"
-                style={{
-                  boxShadow: `inset 0 0 0 1px ${project.color}50`,
-                }}
-              />
             </motion.div>
           ))}
         </div>

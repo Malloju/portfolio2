@@ -61,7 +61,7 @@ function SkillGridItem({ name, index }: { name: string; index: number }) {
       initial={{ opacity: 0, scale: 0.9, y: 30 }}
       animate={isInView ? { opacity: 1, scale: 1, y: 0 } : {}}
       transition={{ duration: 0.5, delay: index * 0.05 }}
-      className="group relative flex flex-col items-center justify-center p-6 rounded-[2rem] transition-all duration-300 hover:-translate-y-2 cursor-pointer"
+      className="w-[calc(50%-0.75rem)] sm:w-[calc(33.333%-1rem)] md:w-[calc(25%-1.125rem)] lg:w-[calc(20%-1.2rem)] group relative flex flex-col items-center justify-center p-4 sm:p-6 rounded-[2rem] transition-all duration-300 hover:-translate-y-2 cursor-pointer"
       style={{
         background: '#0d1117',
         border: '1px solid rgba(255,255,255,0.05)',
@@ -107,7 +107,7 @@ export default function Skills() {
     <section id="skills" className="py-24 relative" style={{ background: '#030712' }}>
       <div className="orb w-80 h-80 bottom-0 left-0" style={{ background: 'rgba(108,99,255,0.12)' }} />
 
-      <div ref={ref} className="max-w-6xl mx-auto px-6 relative left-[2cm]">
+      <div ref={ref} className="max-w-6xl mx-auto px-6 relative">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -126,12 +126,12 @@ export default function Skills() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="flex justify-center mb-16"
         >
-          <div className="inline-flex gap-2 p-1.5 rounded-2xl" style={{ background: 'var(--bg-card)', border: '1px solid var(--border-color)' }}>
+          <div className="flex flex-wrap justify-center gap-2 p-1.5 rounded-2xl w-full sm:w-auto" style={{ background: 'var(--bg-card)', border: '1px solid var(--border-color)' }}>
             {categories.map((cat) => (
               <button
                 key={cat.key}
                 onClick={() => setActiveCategory(cat.key)}
-                className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-medium transition-all duration-300"
+                className="flex flex-1 sm:flex-none justify-center items-center gap-1 sm:gap-2 px-3 sm:px-5 py-2 sm:py-2.5 rounded-xl text-[13px] sm:text-sm font-medium transition-all duration-300 min-w-[100px]"
                 style={{
                   background: activeCategory === cat.key ? 'linear-gradient(135deg, #6c63ff, #8b83ff)' : 'transparent',
                   color: activeCategory === cat.key ? 'white' : 'var(--text-secondary)',
@@ -150,7 +150,7 @@ export default function Skills() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.35 }}
-          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 mb-16"
+          className="flex flex-wrap justify-center gap-6 mb-16"
         >
           {currentSkills.map((skill, i) => (
             <SkillGridItem key={skill.name} name={skill.name} index={i} />
