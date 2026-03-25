@@ -110,7 +110,7 @@ export default function Experience() {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          className="mt-20 relative left-8"
+          className="mt-20 relative"
         >
           <div className="text-center mb-10">
             <p className="section-subheading mb-3 uppercase tracking-widest text-sm text-[#8b5cf6] font-semibold">Credentials</p>
@@ -119,9 +119,9 @@ export default function Experience() {
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-12 items-stretch">
+          <div className="flex flex-wrap justify-center gap-6 lg:gap-8 mb-12 items-stretch">
             {certifications.map((cert) => (
-              <div key={cert.id} className="rounded-xl bg-[#1A1C29] overflow-hidden flex flex-col h-full border border-gray-800">
+              <div key={cert.id} className="w-full md:w-[calc(50%-1.5rem)] lg:w-[calc(33.333%-2rem)] max-w-[400px] rounded-xl bg-[#1A1C29] overflow-hidden flex flex-col h-full border border-gray-800">
                 <div className="relative bg-white w-full h-[220px] p-2 flex items-center justify-center">
                   {cert.certificateImage ? (
                     <img 
@@ -170,7 +170,7 @@ export default function Experience() {
             ))}
 
             {/* KPIT Sparkle Grid Card */}
-            <div className="rounded-xl bg-[#151624] overflow-hidden flex flex-col border border-gray-800 shadow-xl group hover:border-[#8b5cf6]/50 transition-all">
+            <div className="w-full md:w-[calc(50%-1.5rem)] lg:w-[calc(33.333%-2rem)] max-w-[400px] rounded-xl bg-[#151624] overflow-hidden flex flex-col border border-gray-800 shadow-xl group hover:border-[#8b5cf6]/50 transition-all">
               {/* Image area */}
               <div className="w-full h-[220px] bg-white flex items-center justify-center relative overflow-hidden">
                 <img
@@ -206,7 +206,7 @@ export default function Experience() {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          className="relative left-8"
+          className="relative"
           style={{ marginTop: '3cm' }}
         >
           <div className="text-center mb-12">
@@ -216,10 +216,10 @@ export default function Experience() {
 
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div className="flex flex-wrap justify-center gap-6">
 
             {/* Leetcode */}
-            <div className="p-5 rounded-[20px] bg-[#11121A] flex flex-col relative overflow-hidden" style={{ border: '2px solid #FFA116' }}>
+            <div className="w-full sm:max-w-[500px] p-5 rounded-[20px] bg-[#11121A] flex flex-col relative overflow-hidden" style={{ border: '2px solid #FFA116' }}>
               <div className="flex justify-between items-center mb-5">
                 <div className="flex items-center gap-3">
                   <span className="text-[#FFA116]"><SiLeetcode size={24} /></span>
@@ -258,7 +258,7 @@ export default function Experience() {
             </div>
 
             {/* GFG */}
-            <div className="p-5 rounded-[20px] bg-[#11121A] flex flex-col relative overflow-hidden" style={{ border: '2px solid #2F8D46' }}>
+            <div className="w-full sm:max-w-[500px] p-5 rounded-[20px] bg-[#11121A] flex flex-col relative overflow-hidden" style={{ border: '2px solid #2F8D46' }}>
               <div className="flex justify-between items-center mb-5">
                 <div className="flex items-center gap-3">
                   <span className="text-[#2F8D46]"><SiGeeksforgeeks size={24} /></span>

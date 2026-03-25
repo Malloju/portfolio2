@@ -44,7 +44,7 @@ export default function Contact() {
       <div className="orb w-80 h-80 bottom-0 left-1/4" style={{ background: 'rgba(108,99,255,0.15)' }} />
       <div className="orb w-64 h-64 top-1/4 right-1/4" style={{ background: 'rgba(34,211,238,0.1)' }} />
 
-      <div ref={ref} className="max-w-6xl mx-auto px-6 relative left-[2cm]">
+      <div ref={ref} className="max-w-6xl mx-auto px-6 relative">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -59,13 +59,13 @@ export default function Contact() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
+        <div className="flex flex-wrap lg:flex-nowrap justify-center items-start gap-8 w-full max-w-5xl mx-auto">
           {/* Left panel */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="lg:col-span-2 flex flex-col gap-6"
+            className="w-full lg:w-2/5 max-w-[500px] flex flex-col gap-6"
           >
             {/* Contact info */}
             {[
@@ -121,7 +121,7 @@ export default function Contact() {
             initial={{ opacity: 0, x: 30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="lg:col-span-3"
+            className="w-full lg:w-3/5 max-w-[700px]"
           >
             <div className="p-6 sm:p-8 rounded-2xl" style={{ background: 'var(--bg-card)', border: '1px solid var(--border-color)' }}>
               {submitted ? (
